@@ -3,61 +3,118 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="透過簡單問答找出目前最需要被照顧的脈輪能量與適合的水晶。">
-  <title>水晶能量測驗 | 找出你的脈輪能量</title>
+  <meta name="description" content="選擇 15 題簡易版或 25 題精準版，找出此刻最需要被照顧的脈輪能量與水晶建議。">
+  <title>水晶能量測驗 | 溫柔脈輪覺察</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@500;700&family=Noto+Sans+TC:wght@400;500;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-  <main class="page-shell">
-    <section class="intro" aria-labelledby="site-title">
-      <div class="brand-row" aria-label="Crystal Chakra Quiz">
-        <span class="brand-mark">✦</span>
-        <span>Crystal Chakra Quiz</span>
+  <a class="skip-link" href="#mainContent">跳到主要內容</a>
+
+  <main id="mainContent" class="site-shell">
+    <section class="hero" aria-labelledby="siteTitle">
+      <div class="hero-copy">
+        <div class="brand-lockup" aria-label="Crystal Energy Studio">
+          <span class="brand-mark" aria-hidden="true">CE</span>
+          <span>Crystal Energy Studio</span>
+        </div>
+
+        <p class="kicker">Chakra Crystal Reading</p>
+        <h1 id="siteTitle">水晶能量測驗</h1>
+        <p class="lead">用一段安靜的時間，覺察此刻身體與心的訊號，找到最適合陪伴你的水晶能量。</p>
+
+        <div class="hero-stats" aria-label="測驗特色">
+          <span>15 / 25 題雙版本</span>
+          <span>七脈輪分析</span>
+          <span>水晶建議</span>
+        </div>
       </div>
 
-      <h1 id="site-title">水晶能量測驗</h1>
-      <p class="lead">跟著最近的感受回答，看看哪一股能量最需要被溫柔照顧。</p>
-
-      <div class="crystal-scene" role="img" aria-label="七色水晶能量圖像">
-        <span class="sun-disc"></span>
-        <span class="crystal crystal-rose"></span>
-        <span class="crystal crystal-gold"></span>
-        <span class="crystal crystal-teal"></span>
-        <span class="crystal crystal-violet"></span>
-        <span class="ground-line"></span>
-      </div>
-
-      <div class="energy-readout" aria-live="polite">
-        <span>目前平均</span>
-        <strong id="averageScore">3.0</strong>
-        <span>/ 5</span>
+      <div class="hero-visual" role="img" aria-label="溫柔卡其色系的水晶與月相視覺">
+        <span class="moon-disc"></span>
+        <span class="halo-ring halo-ring-one"></span>
+        <span class="halo-ring halo-ring-two"></span>
+        <span class="gem-stem gem-stem-large"></span>
+        <span class="gem-stem gem-stem-medium"></span>
+        <span class="gem-stem gem-stem-small"></span>
+        <span class="visual-caption">Soft khaki ritual mood</span>
       </div>
     </section>
 
-    <section class="quiz-panel" aria-labelledby="quiz-title">
-      <div class="panel-heading">
-        <p class="eyebrow">今日狀態</p>
-        <h2 id="quiz-title">選擇最接近你的分數</h2>
+    <section id="modePanel" class="panel mode-panel" aria-labelledby="modeTitle">
+      <div class="section-heading">
+        <p class="eyebrow">Step 01</p>
+        <h2 id="modeTitle">選擇你的測驗深度</h2>
+        <p>想快速感受今日能量，或更精準地看見七脈輪狀態，都可以從這裡開始。</p>
+      </div>
+
+      <div class="mode-grid">
+        <button class="mode-card" type="button" data-mode="simple">
+          <span class="mode-count">15</span>
+          <span class="mode-name">題簡易版</span>
+          <span class="mode-copy">適合第一次測驗，快速找出今日最需要照顧的能量。</span>
+        </button>
+
+        <button class="mode-card featured" type="button" data-mode="precise">
+          <span class="mode-count">25</span>
+          <span class="mode-name">題精準版</span>
+          <span class="mode-copy">更細緻地整理情緒、行動力、直覺與連結狀態。</span>
+        </button>
+      </div>
+    </section>
+
+    <section id="quizPanel" class="panel quiz-panel" aria-labelledby="quizTitle" hidden>
+      <div class="quiz-topbar">
+        <div class="section-heading compact">
+          <p class="eyebrow">Step 02</p>
+          <h2 id="quizTitle">依照最近一週的感受作答</h2>
+        </div>
+        <div class="quiz-meta" aria-live="polite">
+          <span id="modeLabel">精準版</span>
+          <strong id="questionCount">25 題</strong>
+        </div>
+      </div>
+
+      <div class="progress-wrap" aria-label="作答進度">
+        <span id="progressText">已完成 0 / 25</span>
+        <span class="progress-track">
+          <span id="progressBar" class="progress-bar"></span>
+        </span>
       </div>
 
       <form id="quizForm" class="quiz-form">
         <div id="questionList" class="question-list"></div>
 
         <div class="actions">
-          <button class="primary-button" type="submit">看結果</button>
-          <button class="secondary-button" id="resetButton" type="button">重新測驗</button>
+          <button class="primary-button" type="submit">看我的能量結果</button>
+          <button class="secondary-button" id="changeModeButton" type="button">重新選擇版本</button>
         </div>
       </form>
     </section>
 
-    <section id="resultPanel" class="result-panel" aria-live="polite" hidden>
-      <div class="panel-heading">
-        <p class="eyebrow">你的水晶配方</p>
-        <h2 id="resultTitle">今日需要照顧的能量</h2>
+    <section id="resultPanel" class="panel result-panel" aria-live="polite" aria-labelledby="resultTitle" hidden>
+      <div class="section-heading">
+        <p class="eyebrow">Step 03</p>
+        <h2 id="resultTitle">今日最需要被照顧的能量</h2>
+        <p id="resultSummary">這是根據你剛才的回答整理出的前三個脈輪狀態。</p>
       </div>
 
       <div id="resultCards" class="result-grid"></div>
-      <p class="result-note">這份測驗適合做為自我覺察與生活儀式參考；真正重要的，是你願意照顧自己的那個片刻。</p>
+
+      <div class="shop-card">
+        <div>
+          <p class="eyebrow">Crystal Pairing</p>
+          <h3>想搭配水晶一起做日常能量照顧？</h3>
+          <p>測驗結果可以作為挑選水晶的靈感，選一顆此刻最想靠近的能量，放進你的生活儀式裡。</p>
+        </div>
+        <a class="shop-link" href="https://myship.7-11.com.tw/general/detail/GM2604268261360" target="_blank" rel="noopener noreferrer">前往我的水晶賣場</a>
+      </div>
+
+      <div class="actions result-actions">
+        <button class="secondary-button" id="resetButton" type="button">重新測驗</button>
+      </div>
     </section>
   </main>
 
